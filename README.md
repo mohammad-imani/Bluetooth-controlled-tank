@@ -2,7 +2,6 @@
 
 A simple yet expandable Bluetooth-controlled tank project built with Arduino Nano. This project demonstrates how to control a robot tank via a serial Bluetooth connection from any smartphone.
 
-> ** Note:** This is my first GitHub project!
 
 ---
 
