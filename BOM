@@ -2,7 +2,6 @@
  
 **Version:** 1.0  
 
-
 ## Complete Parts List
 
 | 1  | Arduino Nano             | 1  |
@@ -17,10 +16,11 @@
 | 10 | USB Programming Cable    | 1  |
 | 11 | LED                      | 2  | 
 | 12 | battery charge module    | 2  |
+| 13 | 5V Relay module          | 2  | 
 ---
 
 > **Minimum Battery Capacity:** 2000mAh for 1 hour operation
 
-voltage the l298n motor drive input power is between 5 and 28 so you can use the 7th part
-with 1 battery or without than and connect to batteries for having the 7.4V. 
-but in thee second way you will need a 2 cell battery charger or take out the batteries and charge them one after one . 
+The l298n motor drive input voltage is between 5 and 28 so you can use the 7th part
+with 1 battery or without that and connect to batteries for having the 7.4V. 
+but in the second way you will need a 2 cell battery charger or take out the batteries and charge them one after one . 
