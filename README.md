@@ -40,7 +40,8 @@ Before anything else, we need to establish a reliable connection between the mic
 
 ## Bill of Material
 The complete list is in the BOM file.<br>
-in each step we need new parts. details all are in BOM.
+in each step we need new parts. details all are in BOM.<br>
+https://github.com/mohammad1386imani-hue/Bluetooth-controlled-tank/blob/main/BOM
 
 
 ## Components Used (Full List)
