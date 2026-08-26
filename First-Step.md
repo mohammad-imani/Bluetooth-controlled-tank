@@ -74,6 +74,9 @@ so the voltage is divided by resistors, as they are same , they will decrease th
 and it's done. it just needs to connect the RX in the Bluetooth module next than first resistor , in that place the voltage is 3.3
 
 
+### Connecting problem
+Sometimes the boards we buy are not orginal classic bluetooth serial. sometimes they are BLE (Bluetooth Low Energy), and it will make an issue.
+the problem is: mostly applications we download for serial connection , are made for classic bluetooth, so we can't connect our board. the soloution it searching BLE instead bluetooth serial and find applications for BLE.
 
-
-
+### resieving wrong data
+The bluetooth module sends characters with their ASCCI code. for example when you send 'A' , the application sends number 65 and the module knows its a char and change it into the char and you will see the 'A' , but when you send 65 , the app sends '6' and '5' or 54 and 53 and you will see the 54 and 53 in diffrent lines. we can change this number to string again but it's very simple to use characters.
