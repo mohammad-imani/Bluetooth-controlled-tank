@@ -1,4 +1,4 @@
-# 🎮 Bluetooth-Controlled Tank
+p# 🎮 Bluetooth-Controlled Tank
 
 A simple yet expandable Bluetooth-controlled tank project built with Arduino Nano. This project demonstrates how to control a robot tank via a serial Bluetooth connection from any smartphone.
 
@@ -32,21 +32,16 @@ You'll find detailed explanations in the corresponding section files.
 
 ---
 
+## List of Materials
+The complete list is in the BOM file.<br>
+in each step we need new parts. details all are in BOM.<br>
+https://github.com/mohammad1386imani-hue/Bluetooth-controlled-tank/blob/main/BOM
+
 ##  Step-by-Step Guide
 
 ###  Step 1: Establishing the Bluetooth Connection
 
 Before anything else, we need to establish a reliable connection between the microcontroller and the mobile device. This is the **most critical part** of the system.
 
-## Bill of Material
-The complete list is in the BOM file.<br>
-in each step we need new parts. details all are in BOM.<br>
-https://github.com/mohammad1386imani-hue/Bluetooth-controlled-tank/blob/main/BOM
 
-
-## Components Used (Full List)
-
-*Coming soon in the BOM (Bill of Materials) section...*
-
----
 
