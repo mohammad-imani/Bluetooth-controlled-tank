@@ -12,15 +12,25 @@ This example shows how to control a DC motor's speed using PWM (Pulse Width Modu
 ## Complete Code
 
 ```cpp:motor_control.ino
+#include<softwareserial.h>
+
+
 // Pin definition
-const int motorPin = 9;  // PWM-capable pin (3,5,6,9,10,11 on Uno)
+const int PwmPin     = 10;  // PWM-capable pin (3,5,6,9,10,11 on Uno)
+const int Motor_Pin1 = 9;
+const int Motor_Pin2 = 8;
+
+const int BLE_RX = 11;
+const int BLE_TX = 12;
+
+softwareserial BLEserial(BLE_RX,LE_TX);
 
 void setup() {
-  pinMode(motorPin, OUTPUT);
+  pinMode(  PwmPin   , OUTPUT);
+  pinMode(Motor_Pin1 , OUTPUT);
+  pinMode(Motor_Pin2 , OUTPUT);
   Serial.begin(9600);
-  Serial.println("Motor Control Ready");
-  Serial.println("Send numbers 0-255 to set speed");
-  Serial.println("Or use commands: 'f' (forward), 's' (stop)");
+  BLEserial.begin(9600);
 }
 
 void loop() {
