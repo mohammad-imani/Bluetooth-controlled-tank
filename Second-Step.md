@@ -104,3 +104,15 @@ Arduino's default PWM frequency is **~490Hz** for pins 5 and 6, and **~980Hz** f
 ### Flyback Diode Protection
 Always place a diode (1N4007) across motor terminals with the **cathode** (striped end) connected to VCC to prevent voltage spikes from damaging your components.
 
+
+
+
+
+
+
+
+
+
+
+
+
