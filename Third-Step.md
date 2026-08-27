@@ -9,3 +9,15 @@ here :
 ```cpp
 softwareserial BLEserial(RX_pin,TX_pin);
 ```
+## creating class
+to create class we use the "class" word and we declare it :
+```cpp
+class Motor{
+  private:
+    pass;
+  public:
+    pass;
+};
+```
+
+
