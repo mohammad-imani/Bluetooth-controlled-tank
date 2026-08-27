@@ -46,4 +46,5 @@ https://github.com/mohammad1386imani-hue/Bluetooth-controlled-tank/blob/main/fir
 
 ### Step 2:
 Now, let's take the next step and use the serial connection established previously to start and control a motor using the L298N drive.
-From this point on, we move into the control phase; we begin by implementing control using standard code, and then transition to object-oriented programming to enable the use of multiple motors.
+From this point on, we move into the control phase; we begin by implementing control using standard code, and then transition to object-oriented programming to enable the use of multiple motors.<br>
+https://github.com/mohammad1386imani-hue/Bluetooth-controlled-tank/blob/main/Second-Step.md
