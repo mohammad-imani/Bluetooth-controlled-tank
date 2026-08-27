@@ -105,8 +105,21 @@ Arduino's default PWM frequency is **~490Hz** for pins 5 and 6, and **~980Hz** f
 Always place a diode (1N4007) across motor terminals with the **cathode** (striped end) connected to VCC to prevent voltage spikes from damaging your components.
 
 
+## Working with L298N module
+this module is based on L298N IC. <br>
+It has got three pins for power , six pins for control and four pins for two motor.
 
-
+| Pin Name  |  Work |
+|-----------|-------|
+|   `ENA`   | PWM signal for motor A|
+|   `ENB`   | PWM signal for motor B|
+|`in1 , in2`| motor A control pins  |
+|`in3 , in4`| motor B control pins  |
+|   `vcc`   | input power 5V-28V    |
+|   `GND`   | ground pin            |
+|   `5V`    | 5V logic power supply |
+| `out 1-2` | output for motor A    |
+| `out 3-4` | output for motor B    |
 
 
 
