@@ -121,8 +121,13 @@ It has got three pins for power , six pins for control and four pins for two mot
 | `out 1-2` | output for motor A    |
 | `out 3-4` | output for motor B    |
 
+In this module, there are three pins for input. One is ground, one is 5-28 volts,
+and the other is connected to a 5-volt regulator that is activated with a jumper 
+on the module and is used to power logic circuits like Arduino.<br>
 
+There are also 8 pins for controlling the motors, 6 of which are in a row and the other two are above the side pins, usually connected to ENA and ENB with a jumper. These two pins are 5 volts and allow the motors to operate when connected. However, to send a square wave, the jumpers need to be removed and a PWM signal should be sent to ena and enb. The pins in1-2-3-4 are used for clockwise or counterclockwise rotation, braking, or letting the motors free. 1 and 2 are for the first motor, and the others are for the next motor. If the first pin is high and the second low, the motor will rotate clockwise. Reversing this will change the direction of rotation. If both are high, the motor is in brake mode, and if both are low, the motor is in free mode.<br>
 
+OUT1/2/3/4 : this pins are for motor connection, Numbers 1 and 2 are for the first motor, and 3 and 4 are for the second motor. It’s normal that swapping these pins won’t affect performance and will only change the direction of rotation.
 
 
 
