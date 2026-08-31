@@ -105,6 +105,9 @@ class Motor{
       }
       analogWrite(Pwm_Pin , Pwm_signal );
     }
+    int get_pwm_signal(){
+      return Pwm_signal;
+    }
 };
 ```
 Now it's much easier to create an object. Without this feature, we would have to set each member one by one.
@@ -178,17 +181,144 @@ void setup(){
   Serial.begin(9600);
   BLEserial.begin(9600);
   
-  pinMode(Pin_A , OUTPUT);
-  pinMode(Pin_B , OUTPUT);
-  pinMode(Pwm_Pin , OUTPUT);
+  pinMode(Motor_pinA , OUTPUT);
+  pinMode(Motor_pinB , OUTPUT);
+  pinMode(Motor_Pwm , OUTPUT);
 
 }
 ```
-In the next step, we enter the loop, receive commands via Bluetooth (if any), and perform the corresponding control operations.
+In the next step, we enter the loop, receive commands via Bluetooth (if any), and perform the corresponding control operations.<br>
+Now we use the codes in the first step for receiving commands.
+```cpp
+char command;
+void loop(){
 
+  if (BLEserial.available() > 0){
+    command = BLEserial.read();
 
+    pass; // write control logic here
+ 
+  }
+}
+```
+For writing the control logic, we can use "if(condition)" or "switch (command)" , it's recommended to use second one, because it makes your code
+so cleaner. 
+```cpp
+switch (command){
+      case 'F' :
+        Motor_A.Forward();
+      break;
+      case 'B' :
+        Motor_A.Backward();
+      break;
+      case 'S' :
+        Motor_A.Stop();
+      break;
+      case '+' :
+        Motor_A.set_pwm_signal(Motor_A.get_pwm_signal()+10);
+      break;
+    case '-' :
+        Motor_A.set_pwm_signal(Motor_A.get_pwm_signal()-10);
+      break;
+    };
+```
+And the final code is:
 
+```cpp
+#include <SoftwareSerial.h>
 
+const int BLE_RX = 11;
+const int BLE_TX = 12;
 
+const int Motor_pinA = 8;
+const int Motor_pinB = 9;
+const int Motor_Pwm = 10;
+
+class Motor{
+  private:
+    int Pin_A;
+    int Pin_B;
+    int Pwm_Pin;
+    int Pwm_signal = 150 ;
+  public:
+    Motor(int a,int b,int c){
+      Pin_A = a;
+      Pin_B = b;
+      Pwm_Pin = c;
+}
+    void Forward(){
+      digitalWrite( Pin_A , HIGH);
+      digitalWrite( Pin_B , LOW );
+      analogWrite(Pwm_Pin , Pwm_signal );
+    }
+    void Backward(){
+      digitalWrite( Pin_B , HIGH);
+      digitalWrite( Pin_A , LOW );
+      analogWrite(Pwm_Pin , Pwm_signal );
+    }
+    void Stop(){
+      digitalWrite( Pin_A , LOW);
+      digitalWrite( Pin_B , LOW );
+      analogWrite(Pwm_Pin , 0 );
+    }
+    void set_pwm_signal(int n){
+      Pwm_signal = n;
+      if (Pwm_signal > 255){
+        Pwm_signal = 255;
+      }
+      if (Pwm_signal < 55){
+        Pwm_signal = 55;
+      }
+      analogWrite(Pwm_Pin , Pwm_signal );
+    }
+    int get_pwm_signal(){
+      return Pwm_signal;
+    }
+};
+
+SoftwareSerial BLEserial(BLE_RX , BLE_TX);
+
+Motor Motor_A(Motor_pinA , Motor_pinB , Motor_Pwm);
+
+void setup(){
+
+  Serial.begin(9600);
+  BLEserial.begin(9600);
+  
+  pinMode(Motor_pinA , OUTPUT);
+  pinMode(Motor_pinB , OUTPUT);
+  pinMode(Motor_Pwm , OUTPUT);
+
+}
+
+char command;
+void loop(){
+
+  if (BLEserial.available() > 0){
+    command = BLEserial.read();
+
+    switch (command){
+      case 'F' :
+        Motor_A.Forward();
+      break;
+      case 'B' :
+        Motor_A.Backward();
+      break;
+      case 'S' :
+        Motor_A.Stop();
+      break;
+      case '+' :
+        Motor_A.set_pwm_signal(Motor_A.get_pwm_signal()+10);
+      break;
+    case '-' :
+        Motor_A.set_pwm_signal(Motor_A.get_pwm_signal()-10);
+      break;
+    };
+  }
+}
+```
+Now we can use this code for control a single DC motor. for controlling more motors it does not need to change the Motor class, just we need to change the 
+control logic.<br>
+In next step we will do that.
 
 
