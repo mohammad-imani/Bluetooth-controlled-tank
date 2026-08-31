@@ -7,25 +7,25 @@ for example in the softwareserial library when we want to create new rx and tx p
 from the softwareserial class. <br>
 here :  
 ```cpp
-softwareserial BLEserial(RX_pin,TX_pin);
+SoftwareSerial BLEserial(RX_pin,TX_pin);
 ```
 ## creating class
 to create class we use the "class" word and we declare it :
 ```cpp
 class Motor{
   private:
-    pass;
+    //members
   public:
-    pass;
+    //methods
 };
 ```
 what features does a motor have? <br>
 1 - to "IN" pins <br>
 2 - one "EN" pin for PWM signal <br>
 3 - A value for the pwm signal <br>
-those three pins must be constant but the value of pwm signal can change and it's better to set a defult value for pwm signal. <br>
+those three pins must be constant but the value of pwm signal can change and it's better to set a default value for pwm signal. <br>
 it's recommended to declare our features or variable in private and the methods in public.<br>
-for our motor, we have got 5 commands: two for duration of rotation , one for stop and two for changing the speed.<br>
+for our motor, we have got 5 commands: two for direction of rotation , one for stop and two for changing the speed.<br>
 we know this commands as methods, and we declare them in public:
 
 ```cpp
@@ -60,6 +60,9 @@ class Motor{
         Pwm_signal = 55;
       }
       analogWrite(Pwm_Pin , Pwm_signal );
+    }
+    int get_pwm_signal(){
+      return Pwm_signal;
     }
 };
 ```
@@ -114,10 +117,10 @@ Now it's much easier to create an object. Without this feature, we would have to
 ### Using our class 
 Now that we have created the motor class, we can use it in our code to control it.<br>
 At the beginning, we define the pins that we use for the motor we want. We could use the pin numbers in our code, but that's a mistake and makes our code really hard to read. Instead, we give each pin a name that is also used in real life and use that name. Keep in mind that these pins aren't something that are meant to change, so we should define them as constants.<br>
-we must include the softwareserial library to creating a serial connection and resieving commands.
+we must include the softwareserial library to creating a serial connection and receiving commands.
 
 ```cpp
-#include <softwareserial>
+#include <SoftwareSerial.h>
 
 const int BLE_RX = 11;
 const int BLE_TX = 12;
@@ -165,7 +168,7 @@ class Motor{
     }
 };
 
-softwareserial BLEserial(BLE_RX , BLE_TX);
+SoftwareSerial BLEserial(BLE_RX , BLE_TX);
 
 Motor Motor_A(Motor_pinA , Motor_pinB , Motor_Pwm);
 ```
@@ -196,7 +199,7 @@ void loop(){
   if (BLEserial.available() > 0){
     command = BLEserial.read();
 
-    pass; // write control logic here
+    // write control logic here
  
   }
 }
