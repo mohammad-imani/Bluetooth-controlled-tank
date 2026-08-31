@@ -36,8 +36,8 @@ void setup() {
 
 void loop() {
   // Check for serial input
-  if (Serial.available()) {
-    char command = Serial.read();
+  if (BLEserial.available()) {
+    char command = BLEserial.read();
     
     switch (command){
       case 'f' :
