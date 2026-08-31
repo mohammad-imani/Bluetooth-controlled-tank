@@ -135,6 +135,59 @@ case 'Q' :
   break;
 ```
 
+For the next four commands—which relate to cornering—we must implement logic that introduces a speed differential between the left and right tracks upon receiving each command.For example, when we want to turn left, not only must both tracks rotate forward, but the speed of the right track must also be greater than that of the left track for the turn to occur.
+
+`R` : this is the case for forward + right
+```cpp
+case 'R' :
+  Motor_R.Forward();
+  Motor_L.Forward();
+  Motor_R.set_pwm_signal(Motor_R.get_pwm_signal() - 20);
+  Motor_L.set_pwm_signal(Motor_L.get_pwm_signal() + 20);
+  Serial.println("Turning right (forward)");
+break;
+```
+
+`r` :
+```cpp
+case 'R' :
+  Motor_R.Backward();
+  Motor_L.Backward();
+  Motor_R.set_pwm_signal(Motor_R.get_pwm_signal() - 20);
+  Motor_L.set_pwm_signal(Motor_L.get_pwm_signal() + 20);
+  Serial.println("Turning right (backward)");
+break;
+```
+`L` :
+```cpp
+case 'R' :
+  Motor_R.Forward();
+  Motor_L.Forward();
+  Motor_R.set_pwm_signal(Motor_R.get_pwm_signal() + 20);
+  Motor_L.set_pwm_signal(Motor_L.get_pwm_signal() - 20);
+  Serial.println("Turning left (forward)");
+break;
+```
+
+`l` :
+```cpp
+case 'R' :
+  Motor_R.Backward();
+  Motor_L.Backward();
+  Motor_R.set_pwm_signal(Motor_R.get_pwm_signal() + 20);
+  Motor_L.set_pwm_signal(Motor_L.get_pwm_signal() - 20);
+  Serial.println("Turning left (backward)");
+break;
+```
+Now, the more we issue the turn command, the turning radius will become smaller.<br>
+And this is the complete code:
+
+```cpp
+
+
+
+
+
 
 
 
