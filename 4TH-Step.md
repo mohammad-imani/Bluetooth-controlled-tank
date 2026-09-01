@@ -355,8 +355,39 @@ void loop(){
 }
 ```
 ### A Big Problem
-pwm signal memmory
+If you test this code in real, you will notice a problem and that is when we send the `F` command,we need to see the tank moving forward and not in turn.
+if we send one of those four commands for moving in turn, the pwm signal will become diffrent between left track and right one, and when we send the `F` , the motors will work with previous pwm signal wich they were not same, to solve this problem we will set a condition wich it chose the bigger value between pwm signals and set it for both motors when we send `F` or `B`
 
+```cpp
+case 'F' :
+    Motor_R.Forward();
+    Motor_L.Forward();
+    if (Motor_R.get_pwm_signal() > Motor_L.get_pwm_signal()){
+      Motor_R.set_pwm_signal(Motor_R.get_pwm_signal());
+      Motor_L.set_pwm_signal(Motor_R.get_pwm_signal());
+    }
+    else {
+      Motor_R.set_pwm_signal(Motor_L.get_pwm_signal());
+      Motor_L.set_pwm_signal(Motor_L.get_pwm_signal());
+    }
+    Serial.println("Tank is moving Forward");
+  break;
+  
+  case 'B' :
+    Motor_R.Backward();
+    Motor_L.Backward();
+    if (Motor_R.get_pwm_signal() > Motor_L.get_pwm_signal()){
+      Motor_R.set_pwm_signal(Motor_R.get_pwm_signal());
+      Motor_L.set_pwm_signal(Motor_R.get_pwm_signal());
+    }
+    else {
+      Motor_R.set_pwm_signal(Motor_L.get_pwm_signal());
+      Motor_L.set_pwm_signal(Motor_L.get_pwm_signal());
+    }
+    Serial.println("Tank is moving Backward");
+  break;
+ ```
+if set this conditions to our code , it will became ready to use. in the next step we will make our code cleaner.
 
 
 
