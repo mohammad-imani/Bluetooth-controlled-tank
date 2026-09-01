@@ -328,7 +328,7 @@ void loop(){
       Serial.println("Turning right (forward)");
     break;
 
-    case 'R' :
+    case 'r' :
       Motor_R.Backward();
       Motor_L.Backward();
       Motor_R.set_pwm_signal(Motor_R.get_pwm_signal() - 20);
@@ -336,7 +336,7 @@ void loop(){
       Serial.println("Turning right (backward)");
     break;
 
-    case 'R' :
+    case 'L' :
       Motor_R.Forward();
       Motor_L.Forward();
       Motor_R.set_pwm_signal(Motor_R.get_pwm_signal() + 20);
@@ -344,7 +344,7 @@ void loop(){
       Serial.println("Turning left (forward)");
     break;
 
-    case 'R' :
+    case 'l' :
       Motor_R.Backward();
       Motor_L.Backward();
       Motor_R.set_pwm_signal(Motor_R.get_pwm_signal() + 20);
