@@ -14,12 +14,28 @@ void Control(Motor & mR , Motor & mL , char c){
   case 'F' :
     mR.Forward();
     mL.Forward();
+    if (mR.get_pwm_signal() > mL.get_pwm_signal()){
+      mR.set_pwm_signal(mR.get_pwm_signal());
+      mL.set_pwm_signal(mR.get_pwm_signal());
+    }
+    else {
+      mR.set_pwm_signal(mL.get_pwm_signal());
+      mL.set_pwm_signal(mL.get_pwm_signal());
+    }
     Serial.println("Tank is moving Forward");
   break;
   
   case 'B' :
     mR.Backward();
     mL.Backward();
+    if (mR.get_pwm_signal() > mL.get_pwm_signal()){
+      mR.set_pwm_signal(mR.get_pwm_signal());
+      mL.set_pwm_signal(mR.get_pwm_signal());
+    }
+    else {
+      mR.set_pwm_signal(mL.get_pwm_signal());
+      mL.set_pwm_signal(mL.get_pwm_signal());
+    }
     Serial.println("Tank is moving Backward");
   break;
 
