@@ -5,3 +5,10 @@ consider when constructing this function.
 ```cpp
 void Control(Motor & mR , Motor & mL , char c);
 ```
+Now, we place that same control section inside this function, with the difference that we use the names `mR` and `mL` instead of `Motor_R` and `Motor_L`, and we use `c` instead of the `command`.
+```cpp
+void Control(Motor & mR , Motor & mL , char c){
+  
+  
+};
+```
