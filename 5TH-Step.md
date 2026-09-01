@@ -88,7 +88,7 @@ void Control(Motor & mR , Motor & mL , char c){
       Serial.println("Turning right (forward)");
     break;
 
-    case 'R' :
+    case 'r' :
       mR.Backward();
       mL.Backward();
       mR.set_pwm_signal(mR.get_pwm_signal() - 20);
@@ -96,7 +96,7 @@ void Control(Motor & mR , Motor & mL , char c){
       Serial.println("Turning right (backward)");
     break;
 
-    case 'R' :
+    case 'L' :
       mR.Forward();
       mL.Forward();
       mR.set_pwm_signal(mR.get_pwm_signal() + 20);
@@ -104,7 +104,7 @@ void Control(Motor & mR , Motor & mL , char c){
       Serial.println("Turning left (forward)");
     break;
 
-    case 'R' :
+    case 'l' :
       mR.Backward();
       mL.Backward();
       mR.set_pwm_signal(mR.get_pwm_signal() + 20);
@@ -254,7 +254,7 @@ void Control(Motor & mR , Motor & mL , char c){
       Serial.println("Turning right (forward)");
     break;
 
-    case 'R' :
+    case 'r' :
       mR.Backward();
       mL.Backward();
       mR.set_pwm_signal(mR.get_pwm_signal() - 20);
@@ -262,7 +262,7 @@ void Control(Motor & mR , Motor & mL , char c){
       Serial.println("Turning right (backward)");
     break;
 
-    case 'R' :
+    case 'L' :
       mR.Forward();
       mL.Forward();
       mR.set_pwm_signal(mR.get_pwm_signal() + 20);
@@ -270,7 +270,7 @@ void Control(Motor & mR , Motor & mL , char c){
       Serial.println("Turning left (forward)");
     break;
 
-    case 'R' :
+    case 'l' :
       mR.Backward();
       mL.Backward();
       mR.set_pwm_signal(mR.get_pwm_signal() + 20);
