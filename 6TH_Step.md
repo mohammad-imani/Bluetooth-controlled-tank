@@ -142,8 +142,16 @@ void Control(Motor & mR , Motor & mL , char c){
     break;
     }
 };
+```
+There are times when motors unexpectedly stop moving and emit a buzzing sound. In such cases, it may be useful to manually 
+invoke the "shock" function; to this end, we add it to the control function.
 
-
+```cpp
+case 's':
+  mR.Shock();
+  mL.Shock();
+break;
+```
 
 
 
