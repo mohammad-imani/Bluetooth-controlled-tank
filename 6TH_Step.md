@@ -15,7 +15,7 @@ void Shock(){
 }
 ```
 Now, within the control function, we need to call this method in all sections.
-
+```cpp
 void Control(Motor & mR , Motor & mL , char c){
 
    switch(c) {
