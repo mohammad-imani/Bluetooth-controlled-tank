@@ -165,10 +165,19 @@ First of all we need to declare to variables to store the statue of motors.
 char R_statue;
 char L_statue;
 // in the class
-void Statue(){
-  if()
-
+char Statue(){
+  if(digitalRead(Pin_A) && !(digitalRead(Pin_B))){
+    return 'F' ;
+  }
+  if(!(digitalRead(Pin_A)) && (digitalRead(Pin_B))){
+    return 'B' ;
+  }
+  if(!(digitalRead(Pin_A)) && !(digitalRead(Pin_B))){
+    return 'S' ;
+  }
 }
+
+Now, we apply this method within the controller function.
 
 
 
