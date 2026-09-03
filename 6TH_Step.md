@@ -15,6 +15,7 @@ void Shock(){
 }
 ```
 Now, within the control function, we need to call this method in all sections.
+
 ```cpp
 void Control(Motor & mR , Motor & mL , char c){
 
@@ -176,7 +177,7 @@ char Statue(){
     return 'S' ;
   }
 }
-
+```
 Now, we apply this method within the controller function.
 
 ```cpp
