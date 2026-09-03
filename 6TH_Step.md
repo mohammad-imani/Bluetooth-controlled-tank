@@ -196,9 +196,8 @@ const int Motor_L_PWM = 5;
 
 const int LED_pin = 4;
 
-char R_statue;
-char L_statue;
-char Tank_statue;
+char Total_statue = 'S';
+char New_Total_statue = 'S';
 
 class Motor{
   private:
@@ -255,19 +254,31 @@ class Motor{
 
 void Control(Motor & mR , Motor & mL , char c){
 
-  if(R_statue=='F' && R_statue=='F'){
-    Tank_statue = 'F';
+  if(m1.Statue()=='F' && m2.Statue()=='F'){
+    Total_statue = 'F';
   }
-  if(R_statue=='B' && R_statue=='B'){
-    Tank_statue = 'B';
+  if(m1.Statue()=='B' && m2.Statue()=='B'){
+    Total_statue = 'B';
   }
+  if(m1.Statue()=='S' && m2.Statue()=='S'){
+    Total_statue = 'S';
+  }
+
+  if (c=='F' || c=='R' || c=='L'){
+    New_Total_statue = 'F';
+  }
+  if (c=='B' || c=='r' || c=='l'){
+    New_Total_statue = 'B';
+  }
+  if (c=='S'){
+    New_Total_statue = 'S';
+  }
+
   switch(c) {
 
   case 'F' :
     mR.Forward();
     mL.Forward();
-    R_statue = mR.Statue();
-    L_statue = mL.Statue();
     if (mR.get_pwm_signal() > mL.get_pwm_signal()){
       mR.set_pwm_signal(mR.get_pwm_signal());
       mL.set_pwm_signal(mR.get_pwm_signal());
@@ -282,8 +293,6 @@ void Control(Motor & mR , Motor & mL , char c){
   case 'B' :
     mR.Backward();
     mL.Backward();
-    R_statue = mR.Statue();
-    L_statue = mL.Statue();
     if (mR.get_pwm_signal() > mL.get_pwm_signal()){
       mR.set_pwm_signal(mR.get_pwm_signal());
       mL.set_pwm_signal(mR.get_pwm_signal());
@@ -298,24 +307,18 @@ void Control(Motor & mR , Motor & mL , char c){
   case 'D' :
     mR.Backward();
     mL.Forward();
-    R_statue = mR.Statue();
-    L_statue = mL.Statue();
     Serial.println("The Tank is rotating clockwise.");
   break;
 
   case 'd' :
     mR.Forward();
     mL.Backward();
-    R_statue = mR.Statue();
-    L_statue = mL.Statue();
     Serial.println("The Tank is rotating counter-clockwise.");
   break; 
 
   case 'S' :
     mR.Stop();
     mL.Stop();
-    R_statue = mR.Statue();
-    L_statue = mL.Statue();
     Serial.println("The tank stopped.");
   break;
 
@@ -345,8 +348,6 @@ void Control(Motor & mR , Motor & mL , char c){
     case 'R' :
       mR.Forward();
       mL.Forward();
-      R_statue = mR.Statue();
-      L_statue = mL.Statue();
       mR.set_pwm_signal(mR.get_pwm_signal() - 20);
       mL.set_pwm_signal(mL.get_pwm_signal() + 20);
       Serial.println("Turning right (forward)");
@@ -355,8 +356,6 @@ void Control(Motor & mR , Motor & mL , char c){
     case 'r' :
       mR.Backward();
       mL.Backward();
-      R_statue = mR.Statue();
-      L_statue = mL.Statue();
       mR.set_pwm_signal(mR.get_pwm_signal() - 20);
       mL.set_pwm_signal(mL.get_pwm_signal() + 20);
       Serial.println("Turning right (backward)");
@@ -365,8 +364,6 @@ void Control(Motor & mR , Motor & mL , char c){
     case 'L' :
       mR.Forward();
       mL.Forward();
-      R_statue = mR.Statue();
-      L_statue = mL.Statue();
       mR.set_pwm_signal(mR.get_pwm_signal() + 20);
       mL.set_pwm_signal(mL.get_pwm_signal() - 20);
       Serial.println("Turning left (forward)");
@@ -375,8 +372,6 @@ void Control(Motor & mR , Motor & mL , char c){
     case 'l' :
       mR.Backward();
       mL.Backward();
-      R_statue = mR.Statue();
-      L_statue = mL.Statue();
       mR.set_pwm_signal(mR.get_pwm_signal() + 20);
       mL.set_pwm_signal(mL.get_pwm_signal() - 20);
       Serial.println("Turning left (backward)");
@@ -414,7 +409,7 @@ void loop(){
 }
 ```
 
-
+This is now the final result, ready for use and further development.
 
 
 
