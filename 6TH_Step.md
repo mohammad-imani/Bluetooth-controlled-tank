@@ -152,6 +152,50 @@ case 's':
   mL.Shock();
 break;
 ```
+## Inrush current
+Electronic boards are sensitive to their input voltage. If the voltage drops—even for a very brief period—it causes the module to reset or shut down. In this scenario, when the system is moving forward (`F`,`R`,`L`) and a command is immediately sent to reverse direction (`B`,`r`,`l`), an inrush current is drawn at the moment of execution; this leads to a voltage drop and causes the system to reset.<br>
+To resolve this issue, we need to implement commands that handle general movement and check—upon receiving a new command—that it does not conflict with the current direction. If a conflict exists, we must briefly send a stop command to the motors before executing the new command.
+To this end, we need to add a new method to the class to store the rotation direction of the motors. Additionally, within the control function, we must add a section to store the overall movement direction of the new command before executing it.
+
+### Statue Method
+In this method, PWM pins do not matter; only the direction-control pins are significant. We check the state of the pins: if the first pin is High and the second is Low, the rotation is forward; if the reverse is true, the rotation is backward; and if both pins are Low, the motor stops.
+First of all we need to declare to variables to store the statue of motors.
+
+```cpp
+char R_statue;
+char L_statue;
+// in the class
+void Statue(){
+  if()
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
