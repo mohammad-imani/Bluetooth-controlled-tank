@@ -39,7 +39,7 @@ https://github.com/mohammad1386imani-hue/Bluetooth-controlled-tank/blob/main/BOM
 
 ##  Step-by-Step Guide
 
-###  Step 1: Establishing the Bluetooth Connection
+###  Step 1:
 
 Before anything else, we need to establish a reliable connection between the microcontroller and the mobile device. This is the **most critical part** of the system.
 https://github.com/mohammad1386imani-hue/Bluetooth-controlled-tank/blob/main/first%20step
